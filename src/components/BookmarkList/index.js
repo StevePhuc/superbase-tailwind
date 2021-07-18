@@ -8,12 +8,14 @@ export default function BookmarkList(params) {
   const [bookmarks, setBookmarks] = useState([]);
   const [showAddBookmarkDialog, setShowAddBookmarkDialog] = useState(false);
 
-  useEffect(()=>{    async function fetchData() {
-    const data = await axios.get("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", { headers });
-  // console.log('data',data);
-  setBookmarks(data?.data);
-}
-  fetchData()},[])
+  useEffect(() => {
+    async function fetchData() {
+      const data = await axios.get("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", { headers });
+      // console.log('data',data);
+      setBookmarks(data?.data);
+    }
+    fetchData()
+  }, [])
 
   return (
     <div class="flex flex-col flex-wrap justify-center">
