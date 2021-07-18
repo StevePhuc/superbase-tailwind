@@ -53,12 +53,12 @@ export default function BookmarkCard({ bookmark }) {
       </div>
       <div>{synopsis}</div>
       <div class="py-2 my-3 flex">
-        <span
+        {/* <span
           class="cursor-pointer inline mx-1 text-white font-bold py-2 px-4 rounded"
           onClick={copyBookmark}
         >
           <CopyIcon />
-        </span>
+        </span> */}
         <span
           class="cursor-pointer inline mx-1 text-white font-bold py-2 px-4 rounded"
           onClick={deleteBookmark}
@@ -71,12 +71,12 @@ export default function BookmarkCard({ bookmark }) {
         >
           <ViewIcon />
         </span>
-        <span
+        {/* <span
           class="cursor-pointer inline mx-1 text-white font-bold py-2 px-4 rounded"
           onClick={editBookmark}
         >
           <EditIcon />
-        </span>
+        </span> */}
       </div>
       {view ? (
         <ViewBookmarkDialog
