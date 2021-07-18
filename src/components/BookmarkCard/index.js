@@ -2,6 +2,7 @@ import axios from "axios";
 import ViewBookmarkDialog from "./../ViewBookmarkDialog";
 import EditBookmarkDialog from "./../EditBookmarkDialog";
 import { useState } from "react";
+import { headers } from "../../config/header";
 
 export default function BookmarkCard({ bookmark }) {
   const { id, title, content, synopsis } = bookmark;
@@ -36,7 +37,7 @@ export default function BookmarkCard({ bookmark }) {
 
   async function deleteBookmark() {
     if (window.confirm("Do you want to delete this bookmark?")) {
-      await axios.delete("http://localhost:1337/bookmarks/" + id);
+      await axios.delete("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark?id=eq." + id, { headers });
       window.location.reload();
     }
   }
