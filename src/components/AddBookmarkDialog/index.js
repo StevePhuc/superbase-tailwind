@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef } from "react";
+import { headers } from "../../config/header";
 import CloseIcon from "./../CloseIcon";
 
 export default function AddBookmarkDialog({ closeModal }) {
@@ -10,11 +11,11 @@ export default function AddBookmarkDialog({ closeModal }) {
     title = title.value;
     content = content.value;
 
-    await axios.post("http://localhost:1337/bookmarks", {
+    await axios.post("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", {
       title,
       content,
       synopsis: content.slice(0, 100) + "...",
-    });
+    }, {headers});
     window.location.reload();
   }
 

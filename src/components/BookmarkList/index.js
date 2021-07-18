@@ -2,13 +2,14 @@ import BookmarkCard from "./../BookmarkCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AddBookmarkDialog from "./../AddBookmarkDialog";
+import { headers } from "../../config/header";
 
 export default function BookmarkList(params) {
   const [bookmarks, setBookmarks] = useState([]);
   const [showAddBookmarkDialog, setShowAddBookmarkDialog] = useState(false);
 
   useEffect(async () => {
-    const data = await axios.get("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", { 'headers': { 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTI4OTgyMywiZXhwIjoxOTQwODY1ODIzfQ.hT7qQdTTQz-Sr1vrxq6956uzuKdiifV4v7R4dOr7cBE' } });
+    const data = await axios.get("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", { headers });
     // console.log('data',data);
     setBookmarks(data?.data);
   }, []);
