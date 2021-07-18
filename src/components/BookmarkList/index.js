@@ -8,7 +8,8 @@ export default function BookmarkList(params) {
   const [showAddBookmarkDialog, setShowAddBookmarkDialog] = useState(false);
 
   useEffect(async () => {
-    const data = await axios.get("http://localhost:1337/bookmarks");
+    const data = await axios.get("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark", { 'headers': { 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNTI4OTgyMywiZXhwIjoxOTQwODY1ODIzfQ.hT7qQdTTQz-Sr1vrxq6956uzuKdiifV4v7R4dOr7cBE' } });
+    // console.log('data',data);
     setBookmarks(data?.data);
   }, []);
 
@@ -24,7 +25,7 @@ export default function BookmarkList(params) {
       </div>
       <div>
         {bookmarks
-          ?.sort((a, b) => b.created_at.localeCompare(a.created_at))
+          // ?.sort((a, b) => b.created_at.localeCompare(a.created_at))
           .map((bookmark, i) => (
             <BookmarkCard bookmark={bookmark} key={i} />
           ))}
