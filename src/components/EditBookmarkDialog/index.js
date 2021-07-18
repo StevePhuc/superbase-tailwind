@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef } from "react";
+import { headers } from "../../config/header";
 import CloseIcon from "../CloseIcon";
 
 export default function EditBookmarkDialog({ closeModal, bookmark }) {
@@ -10,11 +11,11 @@ export default function EditBookmarkDialog({ closeModal, bookmark }) {
     title = title.value;
     content = content.value;
 
-    await axios.put("http://localhost:1337/bookmarks/" + bookmark?.id, {
+    await axios.patch("https://jeaxwidfbdwnnbqfpusj.supabase.co/rest/v1/bookmark?id=eq." + bookmark?.id, {
       title,
       content,
       synopsis: content.slice(0, 100) + "...",
-    });
+    }, { headers });
     window.location.reload();
   }
 
